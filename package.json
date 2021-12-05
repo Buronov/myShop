@@ -21,6 +21,8 @@
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "nodemon": "^2.0.15",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.3.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   }

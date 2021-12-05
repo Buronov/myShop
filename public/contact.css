@@ -276,7 +276,7 @@ textarea:focus {
   }
 
 
-  button {
+.submit_btn {
     cursor: pointer;
     display: block;
     width: 200px;
@@ -294,29 +294,29 @@ textarea:focus {
 
   }
   
-  button span{
+  .submit_btn span{
     position: relative;
     z-index: 2;
   }
   
-  button:after{
+  .submit_btn:after{
     position: absolute;
     content: "";
     top: 0;
     left: 0;
     width: 0;
     height: 100%;
-    background: blue;
+    background: rgb(46, 46, 83);
     transition: all .59s;
     border-radius: 40px;
     /* border: 1px solid blue; */
   }
   
-  button:hover{
+  .submit_btn:hover{
     color: #fff;
   }
   
-  button:hover:after{
+  .submit_btn:hover:after{
     width: 100%;
     
     border-radius: 40px;
