@@ -25,4 +25,12 @@ router.get("/home", (req, res) => {
   res.render("store", { user: user });
 });
 
+// DATABASE REQUEST
+router.post("/call-me", (req, res) => {
+  console.log(`req.body :::`, req.body);
+  const data = req.body;
+  fs.writeFileSync("database/contact_request.json", JSON.stringify(data));
+  res.json({ state: "succes" });
+});
+
 module.exports = router;
