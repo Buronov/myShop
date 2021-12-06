@@ -24,12 +24,22 @@ router.get("/contact", (req, res) => {
 router.get("/home", (req, res) => {
   res.render("store", { user: user });
 });
+router.get("/input", (req, res) => {
+  res.render("inputs", { user: user });
+});
 
 // DATABASE REQUEST
 router.post("/call-me", (req, res) => {
   console.log(`req.body :::`, req.body);
   const data = req.body;
   fs.writeFileSync("database/contact_request.json", JSON.stringify(data));
+  res.json({ state: "succes" });
+});
+
+router.post("/input-user", (req, res) => {
+  console.log(`req.body :::`, req.body);
+  const data = req.body;
+  fs.writeFileSync("database/user.json", JSON.stringify(data));
   res.json({ state: "succes" });
 });
 
