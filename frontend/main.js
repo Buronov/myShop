@@ -1,16 +1,13 @@
 console.log("Main JS is runing..!")
 import moment from 'moment';
-import momen from 'moment';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 // import $ from 'jquery' 
-
-
 
 $(function () {
     // ************* STORE PAGE *************************
     $("#button_cont").on('click', () => {
         console.log("you clicced Contact button");
-        OpenPopupCenter("/contact", 'contact', 1240, 760)
+        OpenPopupCenter("/contact", 'contact', 1260, 760)
     });
     $('#button_author').on('click', () => {
         console.log("You pressed Author Button");
@@ -23,7 +20,7 @@ $(function () {
             text: 'You Are In Home Page!',
             icon: 'info',
             confirmButtonText: 'Ok'
-          });
+        });
     });
 
 
@@ -52,7 +49,7 @@ $(function () {
         setTimeout(() => {
             window.close();
         }, 2000);
-        
+
 
         $.post('/call-me', params, data => {
             console.log("data : ", data);
@@ -64,13 +61,35 @@ $(function () {
     });
 
     // ************* AUTHOR PAGE *************************
+    // Article Icon
+    $('#article_icon').on('click', () => {
+        console.log("pressed article icon");
+        // const Toast = Swal.mixin({
+        //     toast: true,
+        //     position: 'top-end',
+        //     showConfirmButton: false,
+        //     timer: 2000,
+        //     timerProgressBar: true,
+        //     didOpen: (toast) => {
+        //         toast.addEventListener('mouseenter', Swal.stopTimer)
+        //         toast.addEventListener('mouseleave', Swal.resumeTimer)
+        //     }
+        // });
+
+        // Toast.fire({
+        //     icon: 'info',
+        //     title: `${databasevalue.time}`
+        // });
+    });
+
+    // Coding Icon
     $("#coding_icon").on('click', () => {
         console.log("Pressed Coding Icon");
-        OpenPopupCenter('/input', 'contact', 315, 500);
+        OpenPopupCenter('/input', 'user', 440, 620);
     });
 
 
-    // AUTHOR DATABASE
+    // Submit button - AUTHOR DATABASE
     $('#submit_form').on('click', () => {
         console.log("pressed submit button");
         btfalert();
@@ -109,19 +128,25 @@ $(function () {
             time: moment().format(),
         };
         console.log(parametrs);
-        setTimeout(() => {
-            window.close();
-            window.opener.location.reload();
-        }, 1000);
-        window.opener.location.reload();
-        $.post('/input-user', parametrs, data => {
-            console.log("data : ", data);
-            window.opener.location.reload();
-            // window.close();
-            
+        $.post('/input-user', parametrs, (data) => {
+            if (data) {
+                console.log("data : ", data);
+                window.opener.location.reload();
+                window.close();
+            }
+
         }, "JSON").fail((err) => {
             console.log("ERROR::: ", err);
         });
+    });
+
+
+    // ****** INPUTS
+
+    $(".toggle_btn").on('click', () => {
+        console.log("clicked")
+        $("#inputs_form").toggle("slow");
+        $
     });
 
 });
@@ -134,21 +159,24 @@ function btfalert() {
         timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-      });
-      
-      Toast.fire({
+    });
+
+    Toast.fire({
         icon: 'success',
         title: 'Message Successfully Submitted'
-      });
+    });
 };
+
+
 
 function OpenPopupCenter(pageURL, title, w, h) {
     let left = Math.round(screen.width / 2 - w / 2);
     let top = Math.round(screen.height / 2 - h / 2);
     window.open(
-      pageURL,
-      title,
-      "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=" + w + ", height=" + h + ", top=" + top + ", left=" + left);};
+        pageURL,
+        title,
+        "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=" + w + ", height=" + h + ", top=" + top + ", left=" + left);
+};

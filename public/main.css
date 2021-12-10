@@ -9,6 +9,13 @@
   
 }
 
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+
 
 a:hover {
   color: #278303;
@@ -528,6 +535,7 @@ input {
   font-family: sans-serif;
   font-style: normal;
   font-weight: normal;
+  text-transform: capitalize;
   font-size: 15px;
   line-height: 24px;
 
@@ -702,6 +710,7 @@ input {
 .text {
   width: 100%;
   justify-content: center;
+  text-transform: capitalize;
   align-items: center;
 }
 
@@ -805,6 +814,7 @@ input {
   font-family: sans-serif;
   font-style: normal;
   font-weight: bold;
+  text-transform: capitalize;
   font-size: 48px;
   line-height: 123.6%;
   margin-top: 93px;
